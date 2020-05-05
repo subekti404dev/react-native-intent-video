@@ -53,14 +53,14 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
             intent.setDataAndType(Uri.parse(params.getString(VIDEO_URL)), "video/*");
         } 
         if (params.hasKey(SUBTITLE_URL)) {
-            intent.PutExtra("subs", Uri.parse(params.getString(SUBTITLE_URL)));
-            intent.PutExtra("subs.enable", Uri.parse(params.getString(SUBTITLE_URL)));
+            intent.putExtra("subs", Uri.parse(params.getString(SUBTITLE_URL)));
+            intent.putExtra("subs.enable", Uri.parse(params.getString(SUBTITLE_URL)));
             if (params.hasKey(SUBTITLE_NAME)) {
-                intent.PutExtra("subs.name", params.getString(SUBTITLE_NAME));
-                intent.PutExtra("subs.filename", params.getString(SUBTITLE_NAME) + ".SRT");
+                intent.putExtra("subs.name", params.getString(SUBTITLE_NAME));
+                intent.putExtra("subs.filename", params.getString(SUBTITLE_NAME) + ".SRT");
             } else {
-                intent.PutExtra("subs.name", "NAME");
-                intent.PutExtra("subs.filename", "NAME.SRT");
+                intent.putExtra("subs.name", "NAME");
+                intent.putExtra("subs.filename", "NAME.SRT");
             }
         }
         getReactApplicationContext().startActivityForResult(intent, REQUEST_CODE, null);
