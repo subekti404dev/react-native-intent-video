@@ -17,7 +17,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 
 /**
- * Created by subekti on 16/6/30.
+ * Created by subekti on 05/05/20.
  */
 public class IntentVideoModule extends ReactContextBaseJavaModule implements ActivityEventListener {
     private static final int REQUEST_CODE = 12;
@@ -53,17 +53,17 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
             intent.setDataAndType(Uri.parse(params.getString(VIDEO_URL)), "video/*");
         } 
         if (params.hasKey(SUBTITLE_URL)) {
-            intent.PutExtra("subs", Uri.parse(params.getString(SUBTITLE_URL)))
+            intent.PutExtra("subs", Uri.parse(params.getString(SUBTITLE_URL)));
+            intent.PutExtra("subs.enable", Uri.parse(params.getString(SUBTITLE_URL)));
             if (params.hasKey(SUBTITLE_NAME)) {
-                intent.PutExtra("subs.name", params.getString(SUBTITLE_NAME))
-                intent.PutExtra("subs.filename", params.getString(SUBTITLE_NAME) + ".SRT")
+                intent.PutExtra("subs.name", params.getString(SUBTITLE_NAME));
+                intent.PutExtra("subs.filename", params.getString(SUBTITLE_NAME) + ".SRT");
             } else {
-                intent.PutExtra("subs.name", "NAME")
-                intent.PutExtra("subs.filename", "NAME.SRT")
+                intent.PutExtra("subs.name", "NAME");
+                intent.PutExtra("subs.filename", "NAME.SRT");
             }
-            intent.PutExtra("subs.enable", Uri.parse(params.getString(SUBTITLE_URL)))
         }
-        getReactApplicationContext().startActivityForResult(intent, REQUEST_CODE, null); // 暂时使用当前应用的任务栈
+        getReactApplicationContext().startActivityForResult(intent, REQUEST_CODE, null);
     }
 
 
