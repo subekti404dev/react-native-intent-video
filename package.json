@@ -1,0 +1,19 @@
+{
+  "name": "react-native-intent-video",
+  "version": "0.2.1",
+  "description": "call native function about intent video in react-native android",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subekti404dev/react-native-intent-video.git"
+  },
+  "author": "poberwong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/subekti404dev/react-native-intent-video/issues"
+  },
+  "homepage": "https://github.com/subekti404dev/react-native-intent-video#readme"
+}
