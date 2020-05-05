@@ -1,4 +1,4 @@
-package com.poberwong.launcher;
+package com.subekti.intent_video;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -11,12 +11,12 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by poberwong on 16/6/30.
+ * Created by subekti on 16/6/30.
  */
-public class IntentLauncherPackage implements ReactPackage{
+public class IntentVideoPackage implements ReactPackage{
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new IntentLauncherModule(reactContext)); // 返回一个NativeModule范型的数组就ok
+        return Arrays.<NativeModule>asList(new IntentVideoModule(reactContext)); // 返回一个NativeModule范型的数组就ok
     }
 
     public List<Class<? extends JavaScriptModule>> createJSModules() {
