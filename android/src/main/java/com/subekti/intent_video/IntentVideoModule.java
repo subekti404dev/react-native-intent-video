@@ -53,15 +53,23 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
             intent.setDataAndType(Uri.parse(params.getString(VIDEO_URL)), "video/*");
         } 
         if (params.hasKey(SUBTITLE_URL)) {
-            intent.putExtra("subs", Uri.parse(params.getString(SUBTITLE_URL)));
-            intent.putExtra("subs.enable", Uri.parse(params.getString(SUBTITLE_URL)));
+            Uri[] subs = new Uri[1];
+            String[] subsName = new String[1];
+            String[] subsFilename = new String[1];
+
+            subs[0] =  Uri.parse(params.getString(SUBTITLE_URL));
             if (params.hasKey(SUBTITLE_NAME)) {
-                intent.putExtra("subs.name", params.getString(SUBTITLE_NAME));
-                intent.putExtra("subs.filename", params.getString(SUBTITLE_NAME) + ".SRT");
+                subsName[0] = params.getString(SUBTITLE_NAME);
+                subsFilename[0] = params.getString(SUBTITLE_NAME) + ".SRT";
             } else {
-                intent.putExtra("subs.name", "NAME");
-                intent.putExtra("subs.filename", "NAME.SRT");
+                subsName[0] = "NAME";
+                subsFilename[0] = "NAME.SRT";
             }
+            
+            intent.putExtra("subs", subs);
+            intent.putExtra("subs.enable", subs);
+            intent.putExtra("subs.name", subsName);
+            intent.putExtra("subs.filename", subsFilename);
         }
         getReactApplicationContext().startActivityForResult(intent, REQUEST_CODE, null);
     }
@@ -79,16 +87,6 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
         WritableMap params = Arguments.createMap();
         if (intent != null) {
             params.putInt("resultCode", resultCode);
-
-            Uri data = intent.getData();
-            if (data != null) {
-                params.putString("data", data.toString());
-            }
-
-            Bundle extras = intent.getExtras();
-            if (extras != null) {
-                params.putMap("extra", Arguments.fromBundle(extras));
-            }
         }
 
         this.promise.resolve(params);
