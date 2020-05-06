@@ -24,6 +24,7 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
     
     
     private static final String VIDEO_URL = "videoUrl";
+    private static final String VIDEO_TITLE = "videoTitle";
     private static final String SUBTITLE_URL = "subtitleUrl";
     private static final String SUBTITLE_NAME = "subtitleName";
 
@@ -51,7 +52,12 @@ public class IntentVideoModule extends ReactContextBaseJavaModule implements Act
 
         if (params.hasKey(VIDEO_URL)) {
             intent.setDataAndType(Uri.parse(params.getString(VIDEO_URL)), "video/*");
-        } 
+        }
+        
+        if (params.hasKey(VIDEO_TITLE)) {
+            intent.putExtra("title", params.getString(VIDEO_TITLE));
+        }
+        
         if (params.hasKey(SUBTITLE_URL)) {
             Uri[] subs = new Uri[1];
             String[] subsName = new String[1];
